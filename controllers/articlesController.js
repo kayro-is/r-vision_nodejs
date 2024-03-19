@@ -13,7 +13,7 @@ exports.createArticle = async (req, res) => {
         // envoi de l'article crée en reponse
         res.send(article);
     }catch (err) {
-        res.status(500).send({message: error.message});
+        res.status(500).send({message: err.message});
     }
 };
 
@@ -41,7 +41,7 @@ exports.getAllArticleById = async (res, res) => {
             res.status(404).send({message:'Article not found'});
         }
     }catch (err){
-        res.status(500).send({message: err.message})
+        res.status(500).send({message: err.message});
     }
 };
 
@@ -59,6 +59,23 @@ exports.updateArticle = async (res, res) => {
             res.status(404).send({message: 'Article non trouvée'});
         }
     } catch (err) {
-        res.status(500).send({message : err.message})
+        res.status(500).send({message : err.message});
     }
-}
+};
+
+// supprimée un article pas son id 
+exports.deleteArticle = async (req, res) => {
+    try {
+        // supression de l'article spécifié par son id 
+        const deleted = await Article.destroy ({
+            where : {id: req.params.id},
+        });
+        if (deleted) {
+            res.send({message:'Article supprimé.'});
+        }else{
+            res.status(404).send({message :'Article non trouvé.'});
+        }
+    }catch (err) {
+        res.status(500).send({message : err.message});
+    }
+};
