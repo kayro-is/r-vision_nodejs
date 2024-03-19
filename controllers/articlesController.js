@@ -44,3 +44,21 @@ exports.getAllArticleById = async (res, res) => {
         res.status(500).send({message: err.message})
     }
 };
+
+// mettre a jour un article par son id
+exports.updateArticle = async (res, res) => {
+    try {
+        const {title, body} = res.body;
+        // Mise a jour de l'article spécifié par son id avec les nouvelles données
+        const updated = await Article.update({title,body}, {
+            where: {id: req.params.id},
+        });
+        if (updated) {
+            res.send({message: 'Article mise a jour'});
+        } else {
+            res.status(404).send({message: 'Article non trouvée'});
+        }
+    } catch (err) {
+        res.status(500).send({message : err.message})
+    }
+}
