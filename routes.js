@@ -12,10 +12,6 @@ router.get('/articles', articlesController.getAllArticles); // lire un article p
 router.put('/articles', articlesController.updateArticle); // mettre a jour un article par son ID
 router.delete('/articles', articlesController.deleteArticle); //supprimer un article par son ID
 
-// Routes d'authentification 
-router.post('./register', register);
-router.post('./login', login);
-
 
 
 module.exports = router;
