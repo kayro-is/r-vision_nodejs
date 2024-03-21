@@ -1,5 +1,5 @@
 const {DataTypes} = require('sequelize');
-const Sequelize = require('./sequelize'); // Importation de l'instance de sequelize initialisée
+const sequelize = require('./sequelize.js'); // Importation de l'instance de sequelize initialisée
 
 // Définitgion du Model 'Article' avec ses attributs
 const Article = sequelize.define('Article', {
@@ -26,4 +26,4 @@ const Article = sequelize.define('Article', {
 });
 
 
-module.exports = Article;
+module.exports = Article ;

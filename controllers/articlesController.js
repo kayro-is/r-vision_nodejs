@@ -4,6 +4,7 @@ const Article = require('../models/article.js');
 
 //Crée une nouvel article
 //cette fonction est asynchrone car elle attend l'operation de base de données
+
 exports.createArticle = async (req, res) => {
     try {
         // extraction des données du corp de la requête
@@ -31,7 +32,7 @@ exports.getAllArticles = async (req, res) => {
 
 // lire un article avec son id 
 
-exports.getAllArticleById = async (res, res) => {
+exports.getArticleById = async (req, res) => {
     // récupération d'un article avec son id
     try {
         const article = await Article.findBypk(req.params.id);
@@ -46,7 +47,7 @@ exports.getAllArticleById = async (res, res) => {
 };
 
 // mettre a jour un article par son id
-exports.updateArticle = async (res, res) => {
+exports.updateArticle = async (req, res) => {
     try {
         const {title, body} = res.body;
         // Mise a jour de l'article spécifié par son id avec les nouvelles données

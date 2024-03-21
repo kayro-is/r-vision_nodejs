@@ -1,11 +1,14 @@
 // Création du serveur
-
+const cors = require('cors');
 const express = require('express');
 const sequelize = require('./models/sequelize.js');
 
 
 const app = express();
 
+// importation du routeur depui routes.js
+const routes = require('./routes.js');
+app.use(routes);
 
 // synchronidation des modéle avec la base de données 
 // cette opération crée les tables si elles n'éxistent pas deja 
@@ -13,6 +16,10 @@ const app = express();
 sequelize.sync().then(() => {
     console.log('Modeles synchronisés avec la base de données')
 })
+
+
+app.use(cors());
+
 
 
 const PORT = 3000;
