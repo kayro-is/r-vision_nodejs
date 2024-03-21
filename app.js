@@ -4,7 +4,11 @@ const express = require('express');
 const sequelize = require('./models/sequelize.js');
 
 
+
 const app = express();
+
+// Définir EJS comme moteur de rendu
+app.set('view engine', 'ejs');
 
 // importation du routeur depui routes.js
 const routes = require('./routes.js');
